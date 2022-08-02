@@ -7,8 +7,20 @@
 <body>
 
   <script>
+    // create an array that contains Rock, Paper and Scissors
 
+    const choice = ['Rock' , 'Paper' , 'Scissors'];
 
+    // create a  getComputerChoice function that returns either Rock, Paper or Scissors
+
+    function getComputerChoice() {
+      const random = Math.floor(Math.random() * choice.length);
+      console.log(choice[random]);
+      return choice[random];
+    };
+
+    getComputerChoice();
+  
 
   </script>
 
