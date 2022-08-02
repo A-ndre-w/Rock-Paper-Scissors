@@ -14,24 +14,33 @@
     // create a  getComputerChoice function that returns either Rock, Paper or Scissors
 
     function getComputerChoice() {
-      const random = Math.floor(Math.random() * choice.length);
-      console.log(choice[random]);
-      const computerSelection = choice[random];
-      return computerSelection;
+      let random = Math.floor(Math.random() * choice.length);
+      return choice[random];
     };
-
-    getComputerChoice();
 
     // create a function that takes the player selection and returns Rock, Paper or Scissors
 
     function getPlayerChoice() {
-      const playerSelection = prompt('Choose Rock, Paper or Scissors!').toLowerCase();
-      console.log(playerSelection);
-      return playerSelection;
-    }
-  
-    getPlayerChoice();
-    
+      return prompt('Choose Rock, Paper or Scissors!').toLowerCase();
+    };
+
+    // create a function that starts a game, confronts player and computer choice and gives the result
+
+    function game(playerSelection, computerSelection) {
+
+      if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'paper' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'rock')) {
+        return `You lose! ${computerSelection} beats ${playerSelection}!`;
+      } else if ((computerSelection === 'rock' && playerSelection === 'paper') || (computerSelection === 'paper' && playerSelection === 'scissors') || (computerSelection === 'scissors' && playerSelection === 'rock')) {
+        return `You win! ${playerSelection} beats ${computerSelection}!`;
+      } else {
+        return "It's a tie!";
+      }
+    };
+
+    let computerSelection = getComputerChoice();
+    let playerSelection = getPlayerChoice();
+    game(playerSelection, computerSelection);
+
   </script>
 
 </body>
