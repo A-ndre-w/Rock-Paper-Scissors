@@ -9,19 +9,29 @@
   <script>
     // create an array that contains Rock, Paper and Scissors
 
-    const choice = ['Rock' , 'Paper' , 'Scissors'];
+    const choice = ['rock' , 'paper' , 'scissors'];
 
     // create a  getComputerChoice function that returns either Rock, Paper or Scissors
 
     function getComputerChoice() {
       const random = Math.floor(Math.random() * choice.length);
       console.log(choice[random]);
-      return choice[random];
+      const computerSelection = choice[random];
+      return computerSelection;
     };
 
     getComputerChoice();
-  
 
+    // create a function that takes the player selection and returns Rock, Paper or Scissors
+
+    function getPlayerChoice() {
+      const playerSelection = prompt('Choose Rock, Paper or Scissors!').toLowerCase();
+      console.log(playerSelection);
+      return playerSelection;
+    }
+  
+    getPlayerChoice();
+    
   </script>
 
 </body>
