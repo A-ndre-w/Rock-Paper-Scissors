@@ -3,30 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Page Title</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <button class="button_startround" >Play a round</button>
+  <button class="button" >Rock</button>
+  <button class="button" >Paper</button>
+  <button class="button" >Scissors</button>
+  <div class="playerchoice"></div>
+  <div class="compchoice"></div>
+  <div class="results"></div>
 
   <script>
-    // create an array that contains Rock, Paper and Scissors
+    [...document.querySelectorAll("button")].forEach(function(item) {
+      item.addEventListener('click', startRound)
+    });
 
-    const choice = ['rock' , 'paper' , 'scissors'];
-
-    // create a function that takes the player selection and returns Rock, Paper or Scissors
-
-    function getPlayerChoice() {
-      return prompt('Choose Rock, Paper or Scissors!').toLowerCase();
-    };
+    const div = document.querySelector(".playerchoice");
+    const div2 = document.querySelector(".compchoice");
+    const div3 = document.querySelector(".results");
 
     // create a  getComputerChoice function that returns either Rock, Paper or Scissors
 
     function getComputerChoice() {
+      const choice = ['rock' , 'paper' , 'scissors'];
       let random = Math.floor(Math.random() * choice.length);
       return choice[random];
     };
 
-    // create a function that starts a game, confronts player and computer choice and gives the result
+    // create a  function that confronts player selection with computer selection
 
     function confrontSelection(playerSelection, computerSelection) {
 
@@ -39,22 +43,16 @@
       }
     };
 
+    // create a  function that starts a round
 
 
-    let button = document.getElementsByClassName('button_startround')
-
-    button[0].addEventListener('click', startRound);
-    
     function startRound() {
-      for (i = 0; i < 5; i++) {
-        let playerSelection = getPlayerChoice();
-        console.log(playerSelection);
+        let playerSelection = this.textContent.toLowerCase();
+        div.textContent = `You selected: ${playerSelection}`;
         let computerSelection = getComputerChoice();
-        console.log(computerSelection);
-        confrontSelection(playerSelection, computerSelection);
-        console.log(confrontSelection(playerSelection, computerSelection));
-      }
-    };
+        div2.textContent = `Your opponent selected: ${computerSelection}`
+        div3.textContent = confrontSelection(playerSelection, computerSelection);
+      };
 
   </script>
 
