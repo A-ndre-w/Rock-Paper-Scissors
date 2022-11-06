@@ -6,10 +6,18 @@
 </head>
 <body>
 
+  <button class="button_startround" >Play a round</button>
+
   <script>
     // create an array that contains Rock, Paper and Scissors
 
     const choice = ['rock' , 'paper' , 'scissors'];
+
+    // create a function that takes the player selection and returns Rock, Paper or Scissors
+
+    function getPlayerChoice() {
+      return prompt('Choose Rock, Paper or Scissors!').toLowerCase();
+    };
 
     // create a  getComputerChoice function that returns either Rock, Paper or Scissors
 
@@ -18,15 +26,9 @@
       return choice[random];
     };
 
-    // create a function that takes the player selection and returns Rock, Paper or Scissors
-
-    function getPlayerChoice() {
-      return prompt('Choose Rock, Paper or Scissors!').toLowerCase();
-    };
-
     // create a function that starts a game, confronts player and computer choice and gives the result
 
-    function game(playerSelection, computerSelection) {
+    function confrontSelection(playerSelection, computerSelection) {
 
       if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'paper' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'rock')) {
         return `You lose! ${computerSelection} beats ${playerSelection}!`;
@@ -37,9 +39,22 @@
       }
     };
 
-    let computerSelection = getComputerChoice();
-    let playerSelection = getPlayerChoice();
-    game(playerSelection, computerSelection);
+
+
+    let button = document.getElementsByClassName('button_startround')
+
+    button[0].addEventListener('click', startRound);
+    
+    function startRound() {
+      for (i = 0; i < 5; i++) {
+        let playerSelection = getPlayerChoice();
+        console.log(playerSelection);
+        let computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        confrontSelection(playerSelection, computerSelection);
+        console.log(confrontSelection(playerSelection, computerSelection));
+      }
+    };
 
   </script>
 
