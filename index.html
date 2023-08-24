@@ -13,11 +13,23 @@
     <button class="button" >Paper</button>
     <button class="button" >Scissors</button>
     <div class="choices">
-      <div class="playerchoice"></div>
-      <div class="compchoice"></div>
+      <div class="playerchoice">
+        <div class="playertext"></div>
+        <div class="playericon">
+          <img src="https://www.nicepng.com/png/detail/6-61708_rock-rock-paper-scissors-clipart.png" alt="" class="rock-img hidden fade">
+          <img src="https://www.vhv.rs/dpng/d/490-4906131_rock-paper-scissors-clipart-rock-paper-scissors-png.png" alt="" class="paper-img hidden fade">
+          <img src="https://www.seekpng.com/png/detail/111-1114370_rock-paper-scissors-rock-paper-scissors-clipart.png" alt="" class="scissors-img hidden fade">
+        </div>
+      </div>
+      <div class="compchoice">
+        <div class="comptext"></div>
+        <div class="compicon"></div>
+      </div>
     </div>
     <div class="results"></div>
   </div>
+
+  
   <script>
 
     // select the three buttons and the divs, add an eventlistener to the three buttons which starts the round
@@ -26,9 +38,15 @@
       item.addEventListener('click', startRound)
     });
 
-    const div = document.querySelector(".playerchoice");
-    const div2 = document.querySelector(".compchoice");
+    const div = document.querySelector(".playertext");
+    const div2 = document.querySelector(".comptext");
     const div3 = document.querySelector(".results");
+
+    // select the three icons
+
+    const rockImg = document.querySelector(".rock-img")
+    const paperImg = document.querySelector(".paper-img")
+    const scissorsImg = document.querySelector(".scissors-img")
 
     // create a  getComputerChoice function that returns either Rock, Paper or Scissors
 
@@ -61,11 +79,36 @@
 
 
     function startRound() {
+      div.textContent = "";
+      div2.textContent = "";
+      div3.textContent = "";
+
+
       document.querySelectorAll("button").forEach((button) => { button.disabled = true })
       div.classList.add("fade");
-      let playerSelection = this.textContent.toLowerCase();
-      let computerSelection = getComputerChoice()
+      const playerSelection = this.textContent.toLowerCase();
+      const computerSelection = getComputerChoice()
       div.textContent = `You selected: ${playerSelection}`;
+      
+      // show rock/paper/scissors image depending on choice
+    
+      if (playerSelection === "rock") {
+        paperImg.classList.add("hidden")  
+        scissorsImg.classList.add("hidden")  
+        rockImg.classList.remove("hidden")    
+      } else if (playerSelection === "scissors") {
+        paperImg.classList.add("hidden")  
+        rockImg.classList.add("hidden")
+        scissorsImg.classList.remove("hidden")   
+        } else if (playerSelection === "paper") {
+          rockImg.classList.add("hidden")  
+          scissorsImg.classList.add("hidden")
+          paperImg.classList.remove("hidden")   
+          }
+
+      // set timeout to delay computer selection and results
+
+
       setTimeout(() => { 
         div2.classList.add("fade");
         div2.textContent = `Your opponent selected: ${computerSelection}`;

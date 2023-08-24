@@ -26,9 +26,6 @@ body {
     margin-bottom: 100px;
 }
 
-.playerchoice {
-}
-
 div {
     margin-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -51,3 +48,12 @@ div {
 .lose {
     color: red
 }
+
+.rock-img, .paper-img, .scissors-img {
+    width: 300px;
+}
+
+.hidden {
+    display: none;
+}
+
