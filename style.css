@@ -4,6 +4,11 @@ body {
     color: white;
 }
 
+.container {
+    width: 960px;
+    margin: auto;
+}
+
 .button {
     padding: 10px;
     margin: 50px;
@@ -13,6 +18,15 @@ body {
     border-radius: 5px;
     font-size: 25px;
 
+}
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.playerchoice {
 }
 
 div {

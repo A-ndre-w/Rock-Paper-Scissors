@@ -6,15 +6,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="fade">Let's play a game of Rock, Paper, Scissors!
-  Please make your choice:</div>
-  <button class="button" >Rock</button>
-  <button class="button" >Paper</button>
-  <button class="button" >Scissors</button>
-  <div class="playerchoice"></div>
-  <div class="compchoice"></div>
-  <div class="results"></div>
-
+  <div class="container">
+    <div class="fade">Let's play a game of Rock, Paper, Scissors!
+    Please make your choice:</div>
+    <button class="button" >Rock</button>
+    <button class="button" >Paper</button>
+    <button class="button" >Scissors</button>
+    <div class="choices">
+      <div class="playerchoice"></div>
+      <div class="compchoice"></div>
+    </div>
+    <div class="results"></div>
+  </div>
   <script>
 
     // select the three buttons and the divs, add an eventlistener to the three buttons which starts the round
@@ -58,6 +61,7 @@
 
 
     function startRound() {
+      document.querySelectorAll("button").forEach((button) => { button.disabled = true })
       div.classList.add("fade");
       let playerSelection = this.textContent.toLowerCase();
       let computerSelection = getComputerChoice()
@@ -65,13 +69,13 @@
       setTimeout(() => { 
         div2.classList.add("fade");
         div2.textContent = `Your opponent selected: ${computerSelection}`;
-    }, 1000)
+      } , 1000)
       setTimeout(() => { 
         div3.textContent = confrontSelection(playerSelection, computerSelection) 
         div3.classList.add("fade");
       }, 2000)
       setTimeout(removeFadeClass, 3000)
-      setTimeout(removeFadeClass, 3000)      
+      setTimeout(() => { document.querySelectorAll("button").forEach((button) => { button.disabled = false }) }, 3000)
     };
 
     // create functions that add and remove the fade class so to give the fade effect to popup text
