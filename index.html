@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div>Let's play a game of Rock, Paper, Scissors!
+  <div class="fade">Let's play a game of Rock, Paper, Scissors!
   Please make your choice:</div>
   <button class="button" >Rock</button>
   <button class="button" >Paper</button>
@@ -16,6 +16,9 @@
   <div class="results"></div>
 
   <script>
+
+    // select the three buttons and the divs, add an eventlistener to the three buttons which starts the round
+
     [...document.querySelectorAll("button")].forEach(function(item) {
       item.addEventListener('click', startRound)
     });
@@ -45,17 +48,17 @@
       }
     };
 
-    // create a  function that starts a round
+    // create a  function that starts a round. 
 
 
     function startRound() {
-        let playerSelection = this.textContent.toLowerCase();
-        div.textContent = `You selected: ${playerSelection}`;
-        let computerSelection = getComputerChoice();
-        div2.textContent = `Your opponent selected: ${computerSelection}`
-        div3.textContent = confrontSelection(playerSelection, computerSelection);
-      };
 
+          let playerSelection = this.textContent.toLowerCase();
+          let computerSelection = getComputerChoice();
+          div.textContent = `You selected: ${playerSelection}`;
+          div2.textContent = `Your opponent selected: ${computerSelection}`
+          div3.textContent = confrontSelection(playerSelection, computerSelection);
+     };
   </script>
 
 </body>
