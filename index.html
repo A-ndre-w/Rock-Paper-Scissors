@@ -52,13 +52,31 @@
 
 
     function startRound() {
+      addFadeClass()
+      let playerSelection = this.textContent.toLowerCase();
+      let computerSelection = getComputerChoice()
+      div.textContent = `You selected: ${playerSelection}`;
+      setTimeout(() => { div2.textContent = `Your opponent selected: ${computerSelection}` }, 1000)
+      setTimeout(() => { div3.textContent = confrontSelection(playerSelection, computerSelection) }, 2000)
 
-          let playerSelection = this.textContent.toLowerCase();
-          let computerSelection = getComputerChoice();
-          div.textContent = `You selected: ${playerSelection}`;
-          div2.textContent = `Your opponent selected: ${computerSelection}`
-          div3.textContent = confrontSelection(playerSelection, computerSelection);
-     };
+      setTimeout(() => { div2.classList.remove("fade") }, 3000)
+      setTimeout(() => { div3.classList.remove("fade") }, 3000)      
+    };
+
+    // create functions that add and remove the fade class so to give the fade effect to popup text
+
+    function addFadeClass() {
+      div.classList.add("fade");
+      div2.classList.add("fade");
+      div3.classList.add("fade");
+    }
+
+    function removeFadeClass() {
+      div.classList.remove("fade");
+      div2.classList.remove("fade");
+      div3.classList.remove("fade");
+    }
+
   </script>
 
 </body>
