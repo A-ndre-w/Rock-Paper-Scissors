@@ -40,10 +40,16 @@
     function confrontSelection(playerSelection, computerSelection) {
 
       if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'paper' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'rock')) {
+        div3.classList.remove("win")
+        div3.classList.add("lose")
         return `You lose! ${computerSelection} beats ${playerSelection}!`;
       } else if ((computerSelection === 'rock' && playerSelection === 'paper') || (computerSelection === 'paper' && playerSelection === 'scissors') || (computerSelection === 'scissors' && playerSelection === 'rock')) {
+        div3.classList.remove("lose")
+        div3.classList.add("win");
         return `You win! ${playerSelection} beats ${computerSelection}!`;
       } else {
+        div3.classList.remove("lose")
+        div3.classList.remove("win");
         return "It's a tie!";
       }
     };
@@ -52,15 +58,20 @@
 
 
     function startRound() {
-      addFadeClass()
+      div.classList.add("fade");
       let playerSelection = this.textContent.toLowerCase();
       let computerSelection = getComputerChoice()
       div.textContent = `You selected: ${playerSelection}`;
-      setTimeout(() => { div2.textContent = `Your opponent selected: ${computerSelection}` }, 1000)
-      setTimeout(() => { div3.textContent = confrontSelection(playerSelection, computerSelection) }, 2000)
-
-      setTimeout(() => { div2.classList.remove("fade") }, 3000)
-      setTimeout(() => { div3.classList.remove("fade") }, 3000)      
+      setTimeout(() => { 
+        div2.classList.add("fade");
+        div2.textContent = `Your opponent selected: ${computerSelection}`;
+    }, 1000)
+      setTimeout(() => { 
+        div3.textContent = confrontSelection(playerSelection, computerSelection) 
+        div3.classList.add("fade");
+      }, 2000)
+      setTimeout(removeFadeClass, 3000)
+      setTimeout(removeFadeClass, 3000)      
     };
 
     // create functions that add and remove the fade class so to give the fade effect to popup text
@@ -77,6 +88,12 @@
       div3.classList.remove("fade");
     }
 
+    // create functions to show computerselection and the result, while fading in text
+
+    function showCompSel() {
+      
+    }
+    
   </script>
 
 </body>
