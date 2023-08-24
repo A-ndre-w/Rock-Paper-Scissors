@@ -20,6 +20,11 @@ body {
 
 }
 
+.points {
+    display: flex;
+    justify-content: space-between;
+}
+
 .choices {
     display: flex;
     justify-content: space-between;

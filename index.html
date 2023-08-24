@@ -12,6 +12,10 @@
     <button class="button" >Rock</button>
     <button class="button" >Paper</button>
     <button class="button" >Scissors</button>
+    <div class="points">
+      <div class="player-points">Your Points: <span class="player-points-value"></span></div>
+      <div class="computer-points">Computer Points: <span class="computer-points-value"></span></div>
+    </div>
     <div class="choices">
       <div class="playerchoice">
         <div class="playertext"></div>
@@ -27,6 +31,8 @@
       </div>
     </div>
     <div class="results"></div>
+
+
   </div>
 
   
@@ -48,6 +54,17 @@
     const paperImg = document.querySelector(".paper-img")
     const scissorsImg = document.querySelector(".scissors-img")
 
+    // select point counters
+
+    let playerPoints = document.querySelector(".player-points-value")
+    let computerPoints = document.querySelector(".computer-points-value")
+
+    let playercounter = 0;
+    let computercounter = 0;
+
+    playerPoints.innerHTML = playercounter;
+    computerPoints.innerHTML = computercounter;
+
     // create a  getComputerChoice function that returns either Rock, Paper or Scissors
 
     function getComputerChoice() {
@@ -63,10 +80,21 @@
       if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'paper' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'rock')) {
         div3.classList.remove("win")
         div3.classList.add("lose")
+
+        // raise the computer point counter by one
+        computercounter += 1;
+        computerPoints.innerHTML = computercounter;
+
         return `You lose! ${computerSelection} beats ${playerSelection}!`;
       } else if ((computerSelection === 'rock' && playerSelection === 'paper') || (computerSelection === 'paper' && playerSelection === 'scissors') || (computerSelection === 'scissors' && playerSelection === 'rock')) {
+        
         div3.classList.remove("lose")
         div3.classList.add("win");
+        
+        // raise the player point counter by one
+        playercounter += 1;
+        playerPoints.innerHTML = playercounter;
+
         return `You win! ${playerSelection} beats ${computerSelection}!`;
       } else {
         div3.classList.remove("lose")
