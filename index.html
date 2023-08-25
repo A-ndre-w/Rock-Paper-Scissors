@@ -17,17 +17,17 @@
       <div class="computer-points">Computer Points: <span class="computer-points-value"></span></div>
     </div>
     <div class="choices">
-      <div class="playerchoice">
-        <div class="playertext"></div>
-        <div class="playericon">
+      <div class="player-choice">
+        <div class="player-text"></div>
+        <div class="player-icon">
           <img src="https://dinopixel.com/preload/0422/Rock-Made-with-Dinopixel-Mobile.png" alt="" class="rock-img-p hidden fade">
           <img src="https://art.pixilart.com/2e29f43a603936d.png" alt="" class="paper-img-p hidden fade">
           <img src="https://pbs.twimg.com/media/D7mSLOMUIAAGYfa.png" alt="" class="scissors-img-p hidden fade">
         </div>
       </div>
-      <div class="compchoice">
-        <div class="comptext"></div>
-        <div class="compicon">
+      <div class="compc-hoice">
+        <div class="comp-text"></div>
+        <div class="comp-icon">
           <img src="https://dinopixel.com/preload/0422/Rock-Made-with-Dinopixel-Mobile.png" alt="" class="rock-img-c hidden fade">
           <img src="https://art.pixilart.com/2e29f43a603936d.png" alt="" class="paper-img-c hidden fade">
           <img src="https://pbs.twimg.com/media/D7mSLOMUIAAGYfa.png" alt="" class="scissors-img-c hidden fade">
@@ -48,8 +48,8 @@
       item.addEventListener('click', startRound)
     });
 
-    const div = document.querySelector(".playertext");
-    const div2 = document.querySelector(".comptext");
+    const div = document.querySelector(".player-text");
+    const div2 = document.querySelector(".comp-text");
     const div3 = document.querySelector(".results");
 
     // select the three icons for each side
@@ -115,10 +115,16 @@
 
 
     function startRound() {
-      div.textContent = "";
-      div2.textContent = "";
-      div3.textContent = "";
 
+      // hide all icons
+
+      playerPaperImg.classList.add("hidden")  
+      playerScissorsImg.classList.add("hidden")  
+      playerRockImg.classList.add("hidden")
+      
+      compPaperImg.classList.add("hidden")  
+      compScissorsImg.classList.add("hidden")  
+      compRockImg.classList.add("hidden")    
 
       document.querySelectorAll("button").forEach((button) => { button.disabled = true })
       div.classList.add("fade");
@@ -127,19 +133,13 @@
       div.textContent = `You selected: ${playerSelection}`;
 
           
-      // show rock/paper/scissors image on player side depending on choice
+      // show rock/paper/scissors icon on player side depending on choice
     
       if (playerSelection === "rock") {
-        playerPaperImg.classList.add("hidden")  
-        playerScissorsImg.classList.add("hidden")  
         playerRockImg.classList.remove("hidden")    
       } else if (playerSelection === "scissors") {
-        playerPaperImg.classList.add("hidden")  
-        playerRockImg.classList.add("hidden")
         playerScissorsImg.classList.remove("hidden")   
         } else if (playerSelection === "paper") {
-            playerRockImg.classList.add("hidden")  
-            playerScissorsImg.classList.add("hidden")
             playerPaperImg.classList.remove("hidden")   
           };
 
@@ -156,16 +156,10 @@
 
 
         if (computerSelection === "rock") {
-          compPaperImg.classList.add("hidden")  
-          compScissorsImg.classList.add("hidden")  
           compRockImg.classList.remove("hidden")    
         } else if (computerSelection === "scissors") {
-            compPaperImg.classList.add("hidden")  
-            compRockImg.classList.add("hidden")
             compScissorsImg.classList.remove("hidden")   
           } else if (computerSelection === "paper") {
-              compRockImg.classList.add("hidden")  
-              compScissorsImg.classList.add("hidden")
               compPaperImg.classList.remove("hidden")   
             }
 
