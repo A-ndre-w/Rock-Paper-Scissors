@@ -20,6 +20,11 @@ body {
 
 }
 
+img {
+    width: 300px;
+    height: 300px;
+}
+
 .points {
     display: flex;
     justify-content: space-between;
