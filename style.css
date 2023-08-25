@@ -25,6 +25,10 @@ body {
     justify-content: space-between;
 }
 
+.playerchoice {
+    text-align: left
+}
+
 .choices {
     display: flex;
     justify-content: space-between;
